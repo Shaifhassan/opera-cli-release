@@ -1,13 +1,15 @@
 # Install the Opera Connector
 
+## Docker Container Setup
+
 This guide shows how to install the Opera Connector using Docker Compose on a Linux machine. The public image is used directly, so cloning the repository is not required.
 
-## Prerequisites
+### Prerequisites
 
 - Docker and Docker Compose installed
 - Linux shell access
 
-## Step 1: Create a working folder
+### Step 1: Create a working folder
 
 Create a local folder to hold the connector configuration and compose file:
 
@@ -16,7 +18,7 @@ mkdir -p ~/opera_cli
 cd ~/opera_cli
 ```
 
-## Step 2: Create `config.json`
+### Step 2: Create `config.json`
 
 Create `config.json` using a shell `cat` command.
 
@@ -30,7 +32,7 @@ cat << 'EOF' > config.json
 EOF
 ```
 
-## Step 3: Create `docker-compose.yml`
+### Step 3: Create `docker-compose.yml`
 
 Create `docker-compose.yml` with the connector and CLI service definitions:
 
@@ -59,7 +61,7 @@ services:
 EOF
 ```
 
-## Step 4: Pull the connector image
+### Step 4: Pull the connector image
 
 Pull the public connector image before starting the stack:
 
@@ -69,7 +71,7 @@ docker pull ghcr.io/shaifhassan/opera-cli:latest
 
 This ensures the latest image is available locally.
 
-## Step 5: Start Docker Compose
+### Step 5: Start Docker Compose
 
 Start the connector and CLI services in detached mode:
 
@@ -77,7 +79,7 @@ Start the connector and CLI services in detached mode:
 docker compose up -d connector cli
 ```
 
-## Step 6: Connect to the CLI and configure servers
+### Step 6: Connect to the CLI and configure servers
 
 Open an interactive shell into the CLI container:
 
@@ -93,7 +95,7 @@ Run server management commands inside the CLI container:
 
 Use these commands to create your Oracle source, verify it is saved, and validate connectivity before using it in reports.
 
-## Step 7: Start the connector
+### Step 7: Start the connector
 
 The connector service is started automatically by Docker Compose. If you need to restart it later, use:
 
@@ -101,7 +103,7 @@ The connector service is started automatically by Docker Compose. If you need to
 docker compose up -d connector
 ```
 
-## Notes
+### Notes
 
 - The connector reads `config.json` from `/etc/conn_manager/config.json` inside the container.
 - Keep the image updated with `docker pull ghcr.io/shaifhassan/opera-cli:latest`.
