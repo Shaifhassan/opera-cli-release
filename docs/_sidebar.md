@@ -1,10 +1,10 @@
 - [Introduction](README.md)
-- [Installation](install.md#installation-amp-deployment)
+- [Installation](install.md)
 - [Get Started](install.md#get-started)
 
-- **Configurations**
-  - [Server Management](servers.md#server-management-reference)
-  - [Logger](logging.md#observability-amp-logging)
+- **Command Tool**
+  - [Server Commands](servers.md#server-management-reference)
+
   <!-- - [Output Directory](dump.md#workspace-path-management) -->
 
 <!-- - **Modules**
