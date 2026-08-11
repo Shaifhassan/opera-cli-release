@@ -1,5 +1,4 @@
 - [Introduction](README.md)
-- [Security & Architecture](security.md#security-amp-architecture)
 - [Installation](install.md#installation-amp-deployment)
 - [Get Started](install.md#get-started)
 
