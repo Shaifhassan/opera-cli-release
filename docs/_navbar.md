@@ -1,3 +1,3 @@
 - Versioning
   - [v1.0.0](/v1.0.0/)
-  - [All Releases](https://github.com/Shaifhassan/open-report-cli-release/releases)
+  - [All Releases](https://github.com/Shaifhassan/opera-cli-release/releases)
