@@ -1,31 +1,58 @@
-## Open Report CLI
+## Opera PMS Excel Connector
 
-> The enterprise-grade heartbeat for your data pipeline.
-
----
-
-## What is Open Report?
-
-**Open Report** is an enterprise-grade CLI orchestration tool designed to streamline data extraction, transformation, and delivery from Oracle database environments. It serves as a high-performance bridge between legacy database systems and modern data workflows, allowing developers and data engineers to automate complex reporting tasks with minimal overhead.
-
-By decoupling SQL logic from execution, Open Report enables teams to maintain a centralized library of queries that can be executed on-demand or integrated into automated CI/CD pipelines. Whether you are performing a one-time data audit or scheduling recurring multi-format exports, Open Report provides a consistent, secure, and reproducible interface for data operations.
-
-### Core Value Proposition
-
-- **Logic Decoupling:** Define your SQL business logic once and execute it across various environments without modifying code.
-- **Format Versatility:** Native support for multiple output structures via simple flags, eliminating the need for manual formatting.
-- **Operational Efficiency:** Transition from manual query execution to fully automated "Set and Forget" data delivery pipelines.
-- **Security-First Design:** Engineered with enterprise security standards in mind, ensuring database credentials and sensitive connection strings are protected via robust encryption.
+> A lightweight solution for Excel to retrieve data from Opera PMS using custom formulas and a secure connector.
 
 ---
 
-### Why it Matters
+## What is Opera PMS Excel Connector?
 
-| Feature         | Standard Script       | Open Report CLI                         |
-| --------------- | --------------------- | --------------------------------------- |
-| **Execution**   | Manual / Hardcoded    | Command-driven / Parameterized          |
-| **Security**    | Plaintext credentials | Encrypted Master Password Vault         |
-| **Portability** | Environment-specific  | Configuration-driven                    |
-| **Scalability** | Single-use            | Automated delivery (`dump` & `deliver`) |
+**Opera PMS Excel Connector** is a solution that enables Excel users to fetch Opera PMS data through custom Excel formulas. It is built around a lightweight Rust-based data connector that links Excel to Opera without requiring heavy third-party clients.
+
+This solution is designed for analysts and reporting teams who want the flexibility of Excel while keeping Opera SQL logic centralized and reusable.
+
+### Core Components
+
+1. **Data Connector**
+   - A Rust application that bridges Excel and Opera.
+   - Can run locally or inside Docker.
+   - Handles secure database connections and returns Opera data to Excel.
+
+2. **Excel Add-in**
+   - Adds new custom formulas directly to Excel.
+   - Lets users request Opera data by formula, without manual exports.
+
+3. **Database Objects**
+   - Custom tables and stored procedures for Opera setup.
+   - Provides reusable database objects that support the connector and Excel formulas.
+
+---
+
+### Why this solution matters
+
+- **Excel-first workflows:** Keep analysis in Excel while sourcing live Opera PMS data.
+- **Minimal dependencies:** No heavy PMS client is required on the user machine.
+- **Flexible deployment:** Run the connector locally or in Docker depending on your environment.
+- **Reusable logic:** SQL and database procedures are managed centrally, not scattered across spreadsheets.
+
+---
+
+### Features at a glance
+
+| Feature              | Benefit                                                                 |
+| -------------------- | ----------------------------------------------------------------------- |
+| Custom Excel formula | Pull Opera PMS data directly into worksheets with a single formula.     |
+| Rust connector       | Reliable, high-performance connector that can run locally or in Docker. |
+| Database objects     | Structured Opera-side setup for reusable queries and stored procedures. |
+| Secure connection    | Protects Opera credentials and reduces manual database access.          |
+
+---
+
+## Next steps
+
+This docs folder will expand with module-specific documentation for:
+
+- the Rust data connector,
+- the Excel add-in,
+- the Opera database objects and setup procedures.
 
 ---

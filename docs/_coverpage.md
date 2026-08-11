@@ -2,15 +2,15 @@
 
 ![logo](_media/icon.png)
 
-# opera_cli
+# Opera PMS Excel Connector
 
 ![Release](https://img.shields.io/github/v/release/Shaifhassan/opera-cli-release?color=green&label=version)
 
-> Excel Formula to Fetch Opera PMS Data
+> Connect Excel directly to Opera PMS using custom formulas and a lightweight data connector.
 
-- No heavy clients, just performance
-- Simple Excel Formulas to fetch data set or values from Opera
-- Runs everywhere, requires nothing.
+- No heavy clients, just fast Excel access
+- Custom Excel formulas retrieve Opera data on demand
+- Works locally or via Docker with the same connector
 
 [GitHub](https://github.com/Shaifhassan/opera-cli-release)
 [Get Started](#docsify)
