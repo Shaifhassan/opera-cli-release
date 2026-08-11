@@ -90,7 +90,6 @@ Run server management commands inside the CLI container:
 - Add a new Oracle source: `open_report servers add-oracle <name> <host> <db_user> <service_name>` — [add-oracle](servers.md#add-oracle)
 - List registered servers: `open_report servers list` — [list](servers.md#list)
 - Verify a connection: `open_report servers connect <name>` — [connect](servers.md#connect)
-- Run a connection test: `open_report servers test <name>` — [test](servers.md#test)
 
 Use these commands to create your Oracle source, verify it is saved, and validate connectivity before using it in reports.
 
