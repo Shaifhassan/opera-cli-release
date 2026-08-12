@@ -1,9 +1,9 @@
 - [Introduction](README.md)
 - [Installation](install.md)
-- [Get Started](install.md#get-started)
+- [Get Started](install.md)
 
 - **Command Tool**
-  - [Server Commands](servers.md#server-management-reference)
+  - [Server Commands](servers.md)
 
   <!-- - [Output Directory](dump.md#workspace-path-management) -->
 
