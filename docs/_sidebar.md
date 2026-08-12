@@ -22,8 +22,8 @@
   <!-- - [Troubleshooting](troubleshooting.md) -->
 
 - **Resources**
-  - [GitHub Repo](https://github.com/Shaifhassan/open-report-cli-release)
-  - [Support](https://github.com/Shaifhassan/open-report-cli-release/discussions) -->
+  - [GitHub Repo](https://github.com/Shaifhassan/opera-cli-release)
+  - [Support](https://github.com/Shaifhassan/opera-cli-release/discussions)
 
 ---
 
