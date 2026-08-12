@@ -1,2 +1,3 @@
 - Versioning
+  - [v1.0.0 (Latest)](https://github.com/Shaifhassan/opera-cli-release/releases/tag/v1.0.0)
   - [All Releases](https://github.com/Shaifhassan/opera-cli-release/releases)

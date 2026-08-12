@@ -1,4 +1,4 @@
-# Install the Opera Connector
+# Using Connector with Docker
 
 ## Docker Container Setup
 
@@ -89,9 +89,9 @@ docker compose exec cli bash
 
 Run server management commands inside the CLI container:
 
-- Add a new Oracle source: `open_report servers add-oracle <name> <host> <db_user> <service_name>` — [add-oracle](servers.md#add-oracle)
-- List registered servers: `open_report servers list` — [list](servers.md#list)
-- Verify a connection: `open_report servers connect <name>` — [connect](servers.md#connect)
+- Add a new Oracle source: `opera_cli.exe server add-oracle <name> <host> <db_user> <service_name>` — [add-oracle](servers.md#add-oracle)
+- List registered servers: `opera_cli.exe server list` — [list](servers.md#list)
+- Verify a connection: `opera_cli.exe server connect <name>` — [connect](servers.md#connect)
 
 Use these commands to create your Oracle source, verify it is saved, and validate connectivity before using it in reports.
 
@@ -108,3 +108,5 @@ docker compose up -d connector
 - The connector reads `config.json` from `/etc/conn_manager/config.json` inside the container.
 - Keep the image updated with `docker pull ghcr.io/shaifhassan/opera-cli:latest`.
 - If you change `config.json`, restart the connector container to apply the updated settings.
+
+---

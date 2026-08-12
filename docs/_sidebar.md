@@ -1,6 +1,9 @@
-- [Introduction](README.md)
-- [Installation](install.md)
-- [Get Started](install.md)
+- [Overview](README.md)
+
+- **Getting Started**
+  - [Using Connector with Docker](./getting_started/docker.md)
+  - [Getting Started with self-hosted Connector](./getting_started/self-hosted.md)
+  - [Install Connector as a Service](./getting_started/install-service.md)
 
 - **Command Tool**
   - [Server Commands](servers.md)
