@@ -4,9 +4,8 @@ Use the trial balance formulas to pull the current accounting data from the conn
 
 ## Available formulas
 
-- `=GET_STATUS()` — checks whether the connector API is available.
-- `=FETCH_TB(identifier, reportDate)` — returns the trial balance table as a dynamic spill range.
-- `=FETCH_TB_VALUE(identifier, tCode, startDate, endDate)` — returns a single numeric value for one account code.
+- `=OPERA_TB(identifier, reportDate)` — returns the trial balance table as a dynamic spill range.
+- `=OPERA_TB_VALUE(identifier, tCode, startDate, endDate)` — returns a single numeric value for one account code.
 
 ## Example: get the full trial balance table
 
