@@ -8,9 +8,9 @@ Before using the Excel formulas, make sure `opera_connector` is running and your
 
 Choose one setup method:
 
-- [Using Connector with Docker](./docker.md)
-- [Getting Started with self-hosted Connector](./self-hosted.md)
-- [Install Connector as a Service](./install-service.md)
+- [Using Connector with Docker](getting_started/docker.md)
+- [Getting Started with self-hosted Connector](getting_started/self-hosted.md)
+- [Install Connector as a Service](getting_started/install-service.md)
 
 Once the connector is running, confirm the API is reachable before moving to Excel.
 
@@ -20,7 +20,7 @@ Once the connector is running, confirm the API is reachable before moving to Exc
 
 Install the Excel add-in and point it to your connector host:
 
-- [Install Excel Add-in](./excel-add-in.md)
+- [Install Excel Add-in](getting_started/excel-add-in.md)
 
 After the add-in is loaded, you can start using formulas directly in Excel.
 

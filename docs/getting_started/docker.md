@@ -78,7 +78,7 @@ This ensures the latest image is available locally.
 Start the connector and CLI services in detached mode:
 
 ```bash
-docker compose up -d connector cli
+docker compose up -d cli
 ```
 
 ### Step 6: Connect to the CLI and configure servers
