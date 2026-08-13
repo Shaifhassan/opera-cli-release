@@ -1,42 +1,90 @@
-# Trial Balance
+# Trial Balance Formula
 
-Use the trial balance formulas to pull the current accounting data from the connector into Excel.
+Use the trial balance formulas to pull trial balance data from the connector into Excel.
 
-## Available formulas
+> [!IMPORTANT]
+> Trial balance formulas depend on custom database tables and views. Add the required database elements before using them.
 
-- `=OPERA_TB(identifier, reportDate)` — returns the trial balance table as a dynamic spill range.
-- `=OPERA_TB_VALUE(identifier, tCode, startDate, endDate)` — returns a single numeric value for one account code.
+### Available formulas
 
-## Example: get the full trial balance table
+- `=OPERA_TB(identifier, reportDate)` — returns the full trial balance table as a spill range.
+- `=OPERA_TB_VALUE(identifier, trxCode, startDate, endDate)` — returns a single numeric value.
+
+> [!NOTE]
+> **identifier**: the unique connection name set up for the server.
+
+---
+
+## OPERA_TB
+
+Use this formula to retrieve trial balance data for a resort on a specific date.
+
+This formula returns a dynamic table with headers and rows. It uses Excel spill behavior, so the result fills adjacent cells automatically.
 
 ```excel
-=FETCH_TB("RESORT01", TODAY()-1)
+=OPERA_TB([IDENTIFIER], [DATE])
 ```
 
-- `RESORT01` is the resort or identifier configured in the connector.
-- `TODAY()-1` uses yesterday's date.
+- **IDENTIFIER**: the unique connection name set up for the server.
+- **DATE**: the date for which you want to retrieve the details.
 
-This formula returns a table with headers and rows. It uses Excel spill behavior, so the results flow into adjacent cells automatically.
-
-> Important: leave enough empty space to the right and below the formula cell. Excel will spill the result there.
-
-## Example: get one value from a trial balance
+**example**
+Fetch the trial balance records for yesterday.
 
 ```excel
-=FETCH_TB_VALUE("RESORT01", "1000", TODAY()-1, TODAY()-1)
+=OPERA_TB("RESORT01", TODAY()-1)
 ```
 
-This returns a single numeric value for the selected code and date range.
+| TRX_CODE | DESCRIPTION                     | NET_AMOUNT | DEP_LED_DEBIT | DEP_LED_CREDIT | GUEST_LED_DEBIT | GUEST_LED_CREDIT | PACKAGE_LED_DEBIT | PACKAGE_LED_CREDIT | AR_LED_DEBIT | AR_LED_CREDIT |
+| -------- | ------------------------------- | ---------- | ------------- | -------------- | --------------- | ---------------- | ----------------- | ------------------ | ------------ | ------------- |
+| 1000     | Accommodation Wholesale         | 19893.67   | 0             | 0              | 0               | 0                | 25603.15          | 0                  | 0            | 0             |
+| 1001     | Accommodation Wholesale No Show | 555.46     | 0             | 0              | 714.88          | 0                | 0                 | 0                  | 0            | 0             |
+| 1005     | Accommodation Wholesale Upsell  | 155.4      | 0             | 0              | 200             | 0                | 0                 | 0                  | 0            | 0             |
+| 1080     | Accommodation Wholesale SVC     | 2060.45    | 0             | 0              | 0               | 0                | 0                 | 0                  | 0            | 0             |
+| 1090     | Accommodation Wholesale GST     | 3853.05    | 0             | 0              | 0               | 0                | 0                 | 0                  | 0            | 0             |
+| 1100     | Accommodation Direct            | 1667.76    | 0             | 0              | 0               | 0                | 2146.41           | 0                  | 0            | 0             |
+| 1105     | Accommodation Direct Upsell     | 310.8      | 0             | 0              | 400             | 0                | 0                 | 0                  | 0            | 0             |
+| 1180     | Accommodation Direct SVC        | 197.86     | 0             | 0              | 0               | 0                | 0                 | 0                  | 0            | 0             |
+| 1190     | Accommodation Direct GST        | 369.99     | 0             | 0              | 0               | 0                | 0                 | 0                  | 0            | 0             |
+| 1999     | Accommodation Green Tax         | 3924       | 0             | 0              | 3924            | 0                | 0                 | 0                  | 0            | 0             |
 
-## Spill behavior
 
-The formula that uses spill is:
 
-- `FETCH_TB(...)`
+> [!Important]
+> Leave enough empty space to the right and below the formula cell. Excel will spill the returned table there.
 
-This formula returns a multi-row, multi-column result. Excel spills the output instead of returning a single cell value.
+---
 
-Use the spill result when you want to review a table of balances. Use `FETCH_TB_VALUE(...)` when you only need one number.
+## OPERA_TB_VALUE
+
+Use this formula to retrieve a trial balance value for a single transaction code over a date range.
+
+This formula returns a single value and the result will be displayed in the cell where the formula is entered.
+
+```excel
+=OPERA_TB_VALUE([IDENTIFIER], [TRX_CODE], [FROM_DATE], [TO_DATE])
+```
+
+- **IDENTIFIER**: the unique connection name set up for the server.
+- **TRX_CODE**: the transaction code for which you want the summed value.
+- **FROM_DATE**: the start date of the date range.
+- **TO_DATE**: the end date of the date range.
+
+**example 1**
+Fetch the total value for transaction code `1000` for yesterday.
+
+```excel
+=OPERA_TB_VALUE("RESORT01", "1000", TODAY()-1, TODAY()-1)
+```
+
+**example 2**
+Fetch the total value for transaction code `1000` over the last 7 days.
+
+```excel
+=OPERA_TB_VALUE("RESORT01", "1000", TODAY()-7, TODAY()-1)
+```
+
+---
 
 ## Basic usage tips
 
