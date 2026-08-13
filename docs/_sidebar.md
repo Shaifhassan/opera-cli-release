@@ -9,6 +9,7 @@
 - **Excel Formula**
   - [Trial Balance](./excel_formula/trial-balance.md)
   - [Daily Revenue Report](./excel_formula/revenue.md)
+  - [User defined Formula](./excel_formula/fetch.md)
 
 - **Command Tool**
   - [Server Commands](servers.md)

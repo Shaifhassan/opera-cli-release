@@ -45,7 +45,7 @@ After setting the variable, close and reopen Excel.
 In any Excel cell, enter:
 
 ```excel
-=GET_STATUS()
+=show_status()
 ```
 
 If the connector is running correctly, the result should be:
