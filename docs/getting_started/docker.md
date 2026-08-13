@@ -48,6 +48,8 @@ services:
       - "8080:8080"
     volumes:
       - ./config.json:/etc/conn_manager/config.json
+      - ./sql:/app/sql
+
   cli:
     image: ghcr.io/shaifhassan/opera-cli:latest
     container_name: opera_cli_shell
