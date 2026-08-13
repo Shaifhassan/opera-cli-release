@@ -13,4 +13,4 @@
 - Works locally or via Docker with the same connector
 
 [GitHub](https://github.com/Shaifhassan/opera-cli-release)
-[Get Started](#docsify)
+[Get Started](./getting_started/getstarted.md)

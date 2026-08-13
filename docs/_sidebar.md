@@ -1,6 +1,6 @@
 - [Overview](README.md)
 
-- **Getting Started**
+- [**Getting Started**](./getting_started/getstarted.md)
   - [Using Connector with Docker](./getting_started/docker.md)
   - [Getting Started with self-hosted Connector](./getting_started/self-hosted.md)
   - [Install Connector as a Service](./getting_started/install-service.md)
@@ -32,7 +32,7 @@
 
 - **Resources**
   - [GitHub Repo](https://github.com/Shaifhassan/opera-cli-release)
-  - [Support](https://github.com/Shaifhassan/opera-cli-release/discussions)
+  - [Support](https://github.com/Shaifhassan/opera-cli-release/issues)
 
 ---
 

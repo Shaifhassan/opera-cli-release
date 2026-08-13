@@ -46,13 +46,3 @@ This solution is designed for analysts and reporting teams who want the flexibil
 | Secure connection    | Protects Opera credentials and reduces manual database access.          |
 
 ---
-
-## Next steps
-
-This docs folder will expand with module-specific documentation for:
-
-- the Rust data connector,
-- the Excel add-in,
-- the Opera database objects and setup procedures.
-
----
