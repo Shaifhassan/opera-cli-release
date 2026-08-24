@@ -22,9 +22,10 @@
   - [Session](session.md#session-amp-cache-management)
   - [Data Delivery](deliver.md#data-delivery-deliver) -->
 
-<!-- - **Advanced Usage**
-  - [Automating](automating.md#advanced-automation-amp-orchestration)
+- **Advanced Usage**
+  - [Excel VBA](excel_fomula/vba.md)
 
+<!--
 - **Maintenance**
   - [Changelog](changes_log.md#changelog)
   * [Releases](https://github.com/Shaifhassan/open-report-cli-release/releases)
