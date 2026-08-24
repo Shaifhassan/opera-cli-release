@@ -23,7 +23,7 @@
   - [Data Delivery](deliver.md#data-delivery-deliver) -->
 
 - **Advanced Usage**
-  - [Excel VBA](excel_fomula/vba.md)
+  - [Excel VBA](excel_formula/vba.md)
 
 <!--
 - **Maintenance**
