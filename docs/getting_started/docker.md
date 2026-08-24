@@ -105,6 +105,18 @@ The connector service is started automatically by Docker Compose. If you need to
 docker compose up -d connector
 ```
 
+## Update Docker Container to Latest Version
+
+Pull the latest image, stop and remove the existing containers, then recreate the services:
+
+```bash
+docker compose pull
+docker compose down
+docker compose up -d
+```
+
+The `config.json` and `sql` files are bind-mounted from the working folder, so they are preserved when the containers are recreated.
+
 ### Notes
 
 - The connector reads `config.json` from `/etc/conn_manager/config.json` inside the container.
