@@ -10,6 +10,7 @@
   - [Trial Balance](excel_formula/trial-balance.md)
   - [Daily Revenue Report](excel_formula/revenue.md)
   - [User defined Formula](excel_formula/fetch.md)
+  - [Configuration Data Endpoints](excel_formula/config-data.md)
 
 - **Command Tool**
   - [Server Commands](servers.md)
@@ -24,6 +25,7 @@
 
 - **Advanced Usage**
   - [Excel VBA](excel_formula/vba.md)
+  - [Bulk Configuration Download](excel_formula/bulk-download.md)
 
 <!--
 - **Maintenance**
