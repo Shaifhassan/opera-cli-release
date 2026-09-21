@@ -91,7 +91,7 @@ docker compose exec cli bash
 
 Run server management commands inside the CLI container:
 
-- Add a new Oracle source: `opera_cli.exe server add-oracle <name> <host> <db_user> <service_name>` — [add-oracle](servers.md#add-oracle)
+- Add a new Oracle source: `opera_cli.exe server add-oracle <name> <host> <db_user>` — [add-oracle](servers.md#add-oracle)
 - List registered servers: `opera_cli.exe server list` — [list](servers.md#list)
 - Verify a connection: `opera_cli.exe server connect <name>` — [connect](servers.md#connect)
 

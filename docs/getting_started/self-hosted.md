@@ -86,7 +86,7 @@ If you want a different port, change `8080` to another value before starting the
 
 Run server management commands inside the CLI container:
 
-- Add a new Oracle source: `opera_cli.exe server add-oracle <name> <host> <db_user> <service_name>` — [add-oracle](servers.md#add-oracle)
+- Add a new Oracle source: `opera_cli.exe server add-oracle <name> <host> <db_user>` — [add-oracle](servers.md#add-oracle)
 - List registered servers: `opera_cli.exe server list` — [list](servers.md#list)
 - Verify a connection: `opera_cli.exe server connect <name>` — [connect](servers.md#connect)
 
@@ -160,7 +160,7 @@ EOF'
 
 Run server management commands to add connection
 
-- Add a new Oracle source: `opera_cli server add-oracle <name> <host> <db_user> <service_name>` — [add-oracle](servers.md#add-oracle)
+- Add a new Oracle source: `opera_cli server add-oracle <name> <host> <db_user>` — [add-oracle](servers.md#add-oracle)
 - List registered servers: `opera_cli server list` — [list](servers.md#list)
 - Verify a connection: `opera_cli server connect <name>` — [connect](servers.md#connect)
 
@@ -248,7 +248,7 @@ EOF'
 
 Run server management commands inside the CLI container:
 
-- Add a new Oracle source: `opera_cli server add-oracle <name> <host> <db_user> <service_name>` — [add-oracle](servers.md#add-oracle)
+- Add a new Oracle source: `opera_cli server add-oracle <name> <host> <db_user>` — [add-oracle](servers.md#add-oracle)
 - List registered servers: `opera_cli server list` — [list](servers.md#list)
 - Verify a connection: `opera_cli server connect <name>` — [connect](servers.md#connect)
 
