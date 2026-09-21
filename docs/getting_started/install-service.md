@@ -126,6 +126,10 @@ opera_cli.exe server list
 This confirms both the CLI and the installed Windows service are available on the machine.
 
 ---
+### Whats Next
+
+After the Docker setup is complete, continue with the Excel add-in guide [here](./excel-add-in.md).
+---
 
 ## Notes
 

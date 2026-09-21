@@ -117,6 +117,10 @@ docker compose up -d
 
 The `config.json` and `sql` files are bind-mounted from the working folder, so they are preserved when the containers are recreated.
 
+### Whats Next
+
+After the Docker setup is complete, continue with the Excel add-in guide [here](./excel-add-in.md).
+
 ### Notes
 
 - The connector reads `config.json` from `/etc/conn_manager/config.json` inside the container.

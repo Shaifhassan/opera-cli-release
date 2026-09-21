@@ -292,6 +292,14 @@ export CONN_MANAGER_CONFIG=/custom/path/config.json
 $env:CONN_MANAGER_CONFIG = "C:\custom\path\config.json"
 ```
 
+---
+
+### Whats Next
+
+After the Docker setup is complete, continue with the Excel add-in guide [here](./excel-add-in.md).
+
+---
+
 After configuration, you can add Oracle servers and test connectivity using the CLI commands documented in the server command section.
 
 ---
