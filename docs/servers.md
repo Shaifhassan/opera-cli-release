@@ -43,19 +43,19 @@ Use the links below to jump directly to a command section.
 Registers a new Oracle Database connection for extraction.
 
 ```
-Usage: opera_cli.exe server add-oracle [OPTIONS] <NAME> <HOST> <DB_USER> <SERVICE_NAME>
+Usage: opera_cli.exe server add-oracle [OPTIONS] <NAME> <HOST> <SCHEMA>
 
 Arguments:
-  <NAME>
-  <HOST>
-  <DB_USER>
-  <SERVICE_NAME>
+  <NAME>    The name of the connection to be added
+  <HOST>    the host name or IP address of the connection to be added
+  <SCHEMA>  The schema username for the connection to be added
 
 Options:
-      --port <PORT>                [default: 1521]
-      --store-plain                Skips encryption for the password (Not recommended for production).
-  -d, --description <DESCRIPTION>  Optional description for the Oracle server
-  -h, --help                       Print help
+      --port <PORT>                  The port number of the connection to be added. If not specified, the     default port for Oracle connections (1521) will be used [default: 1521]
+      --store-plain                  store the password in plain text instead of encrypted form. This is useful for testing or debugging purposes, but it is not recommended for production use
+      --service-name <SERVICE_NAME>  The database service name for the connection to be added [default: OPERA]
+  -d, --description <DESCRIPTION>    An optional description for the connection to be added. This can be used to provide additional context or information about the connection
+  -h, --help                         Print help
 ```
 
 - **Interaction:** The CLI will securely prompt you for the database password.
@@ -64,7 +64,7 @@ Options:
 
 ```bash
 # Registering a production Opera database
-> server add-oracle PROD_DB 10.10.20.50 OPPROD OPPROD --port 1521
+> server add-oracle PROD_DB 10.10.20.50 OPPROD
 > Enter Oracle Database Password: ********
 ORACLE connection 'PROD_DB' saved.
 ```
