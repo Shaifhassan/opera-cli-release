@@ -5,7 +5,7 @@ $ErrorActionPreference = "Stop"
 $repo = "Shaifhassan/opera-cli-release"
 $apiUrl = "https://api.github.com/repos/$repo/releases/latest"
 
-$installDir = "$env:LOCALAPPDATA\OperaCLI"
+$installDir = "$env:LOCALAPPDATA\xkyeron"
 
 $addinUrl = "https://raw.githubusercontent.com/$repo/main/excel/OperaExcelFunctions.xlam"
 $addinDir = "$env:APPDATA\Microsoft\AddIns"
@@ -186,22 +186,30 @@ Write-Host ""
 # ------------------------------------------------------------
 # 8. Optional guided server setup
 # ------------------------------------------------------------
+# Prefers a local setup-connection.ps1 next to this script (when
+# run from a downloaded copy). When run via `irm ... | iex`, there
+# is no local file (and no $PSScriptRoot), so it's fetched and run
+# from the same repo instead.
 
-$setupScript = Join-Path $PSScriptRoot "setup-connection.ps1"
+$setupScriptUrl = "https://raw.githubusercontent.com/$repo/main/script/setup-connection.ps1"
+$localSetupScript = if ($PSScriptRoot) { Join-Path $PSScriptRoot "setup-connection.ps1" } else { $null }
 
-if (Test-Path $setupScript) {
+$addConnection = Read-Host "Would you like to add your first server connection now? (Y/n)"
 
-    $addConnection = Read-Host "Would you like to add your first server connection now? (Y/n)"
+if ($addConnection -notmatch "^(n|no)$") {
+    Write-Host ""
 
-    if ($addConnection -notmatch "^(n|no)$") {
-        Write-Host ""
-        & $setupScript
+    if ($localSetupScript -and (Test-Path $localSetupScript)) {
+        & $localSetupScript
     }
     else {
-        Write-Host ""
-        Write-Host "You can add a connection later by running:" -ForegroundColor Yellow
-        Write-Host ""
-        Write-Host "    script\setup-connection.ps1"
-        Write-Host ""
+        Invoke-Expression (Invoke-RestMethod -Uri $setupScriptUrl)
     }
+}
+else {
+    Write-Host ""
+    Write-Host "You can add a connection later by running:" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "    irm $setupScriptUrl | iex"
+    Write-Host ""
 }
