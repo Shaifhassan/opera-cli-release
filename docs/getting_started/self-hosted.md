@@ -11,7 +11,7 @@ The self-hosted setup is useful when you want to run the connector without Docke
 > irm https://raw.githubusercontent.com/Shaifhassan/opera-cli-release/main/script/install.ps1 | iex
 > ```
 >
-> See [Windows Guided Install (Script)](windows-guided-install.md) for details. The manual steps below still apply for Linux, macOS, or if you'd rather install by hand on Windows.
+> See [Windows Guided Install (Script)](getting_started/windows-guided-install.md) for details. The manual steps below still apply for Linux, macOS, or if you'd rather install by hand on Windows.
 
 ## Download the latest release
 
