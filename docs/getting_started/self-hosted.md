@@ -53,44 +53,18 @@ C:\OperaConnector
 Open a new Command Prompt or PowerShell window and check:
 
 ```powershell
-opera_cli.exe --help
+opera_cli --help
 ```
 
-### 3. Configure the config file location
-
-The connector uses this default Windows config path:
-
-```text
-C:\ProgramData\xkyeron\conn_manager\config.json
-```
-
-Create the folder and config file manually in Windows Explorer or with Notepad:
-
-```json
-{
-  "host": "0.0.0.0",
-  "port": 8080,
-  "servers": []
-}
-```
-
-Save it as:
-
-```text
-C:\ProgramData\xkyeron\conn_manager\config.json
-```
-
-If you want a different port, change `8080` to another value before starting the connector.
-
-### 4. Run a server command
+### 3. Run a server command
 
 Run server management commands inside the CLI container:
 
-- Add a new Oracle source: `opera_cli.exe server add-oracle <name> <host> <db_user>` — [add-oracle](servers.md#add-oracle)
-- List registered servers: `opera_cli.exe server list` — [list](servers.md#list)
-- Verify a connection: `opera_cli.exe server connect <name>` — [connect](servers.md#connect)
+- Add a new Oracle source: `opera_cli server add-oracle <name> <host> <db_user>` — [add-oracle](servers.md#add-oracle)
+- List registered servers: `opera_cli server list` — [list](servers.md#list)
+- Verify a connection: `opera_cli server connect <name>` — [connect](servers.md#connect)
 
-### 5. Start the connector
+### 4. Start the connector
 
 Open the extracted folder and run:
 
@@ -135,28 +109,7 @@ Then verify the command is available:
 opera_cli --help
 ```
 
-### 3. Configure the config file location
-
-On Linux, the default configuration file path is:
-
-```text
-/etc/conn_manager/config.json
-```
-
-Create the folder and config file:
-
-```bash
-sudo mkdir -p /etc/conn_manager
-sudo sh -c 'cat > /etc/conn_manager/config.json <<"EOF"
-{
-  "host": "0.0.0.0",
-  "port": 8080,
-  "servers": []
-}
-EOF'
-```
-
-### 4. Run a server command
+### 3. Run a server command
 
 Run server management commands to add connection
 
@@ -164,7 +117,7 @@ Run server management commands to add connection
 - List registered servers: `opera_cli server list` — [list](servers.md#list)
 - Verify a connection: `opera_cli server connect <name>` — [connect](servers.md#connect)
 
-### 5. Start the connector
+### 4. Start the connector
 
 If you want the connector to listen on a different port, change `port` in `/etc/conn_manager/config.json` before launching it.
 
@@ -223,28 +176,7 @@ Then verify:
 opera_cli --help
 ```
 
-### 3. Configure the config file location
-
-On macOS, the connector also uses:
-
-```text
-/etc/conn_manager/config.json
-```
-
-Create the directory and config file:
-
-```bash
-sudo mkdir -p /etc/conn_manager
-sudo sh -c 'cat > /etc/conn_manager/config.json <<"EOF"
-{
-  "host": "0.0.0.0",
-  "port": 8080,
-  "servers": []
-}
-EOF'
-```
-
-### 4. Run a server command
+### 3. Run a server command
 
 Run server management commands inside the CLI container:
 
@@ -252,7 +184,7 @@ Run server management commands inside the CLI container:
 - List registered servers: `opera_cli server list` — [list](servers.md#list)
 - Verify a connection: `opera_cli server connect <name>` — [connect](servers.md#connect)
 
-### 5. Start the connector
+### 4. Start the connector
 
 Edit the config file first if you want a custom port, then launch the binary:
 
