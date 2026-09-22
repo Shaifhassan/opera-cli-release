@@ -10,15 +10,23 @@ Download the add-in file from GitHub:
 https://github.com/Shaifhassan/opera-cli-release/blob/main/excel/OperaExcelFunctions.xlam
 ```
 
+Download `OperaExcelFunctions.xlam` and save it to the following folder:
+
+```
+%APPDATA%\Microsoft\AddIns
+```
+
 ## Install the add-in in Excel
 
-1. Open Microsoft Excel.
-2. Go to `File` -> `Options` -> `Add-ins`.
-3. At the bottom, in `Manage`, select `Excel Add-ins` and click `Go...`.
-4. Click `Browse...`.
-5. Select the downloaded `OperaExcelFunctions.xlam` file.
-6. Click `OK`.
-7. Make sure the add-in is checked in the list and click `OK` again.
+1. In File Explorer, right-click `OperaExcelFunctions.xlam`, select `Properties`, and click `Unblock` if that option is shown.
+2. If you saved the file in `%APPDATA%\Microsoft\AddIns`, open Microsoft Excel.
+3. Go to `File` -> `Options` -> `Add-ins`.
+4. At the bottom, in `Manage`, select `Excel Add-ins` and click `Go...`.
+5. If `OperaExcelFunctions` appears in the list, enable it by checking the box and click `OK`.
+6. Use `Browse...` only if the add-in is stored in another location.
+7. If you load the add-in from another location, make sure that folder is added as a Trusted Location in Excel.
+8. Select the `OperaExcelFunctions.xlam` file and click `OK`.
+9. Make sure the add-in is checked in the list and click `OK` again.
 
 The connector formulas will now be available in Excel.
 
