@@ -4,6 +4,15 @@ This guide explains how to install the connector on your own machine by download
 
 The self-hosted setup is useful when you want to run the connector without Docker and keep the configuration on the host machine.
 
+> [!TIP]
+> On Windows, one command does this entire setup for you — installing the CLI and connector, updating `PATH`, installing the Excel add-in, and optionally adding your first server connection:
+>
+> ```powershell
+> irm https://raw.githubusercontent.com/Shaifhassan/opera-cli-release/main/script/install.ps1 | iex
+> ```
+>
+> See [Windows Guided Install (Script)](windows-guided-install.md) for details. The manual steps below still apply for Linux, macOS, or if you'd rather install by hand on Windows.
+
 ## Download the latest release
 
 Go to the project GitHub releases page and download the latest release archive for your platform:
@@ -21,6 +30,9 @@ Once downloaded, extract the archive to a folder you control.
 ---
 
 ## Windows
+
+> [!NOTE]
+> The steps below are the manual, step-by-step setup. For a faster, scripted setup see [Windows Guided Install (Script)](windows-guided-install.md).
 
 ### 1. Download and extract the ZIP file
 
