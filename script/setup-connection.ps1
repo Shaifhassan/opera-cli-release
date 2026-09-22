@@ -110,8 +110,8 @@ while ($addAnother) {
     }
     else {
         Write-Host ""
-        Write-Host "Testing connection..." -ForegroundColor Cyan
-        & $operaCli server connect $name
+        # Write-Host "Testing connection..." -ForegroundColor Cyan
+        # & $operaCli server connect $name
     }
 
     Write-Host ""
