@@ -180,7 +180,7 @@ Write-Host ""
 Write-Host "The Excel add-in was downloaded and unblocked. To enable it:" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "    In Excel, go to File > Options > Add-ins > Manage: Excel Add-ins > Go..."
-Write-Host "    Check ""OperaExcelFunctions"" and click OK."
+Write-Host "    Check ""Opera Excel VBA Functions"" and click OK."
 Write-Host ""
 
 # ------------------------------------------------------------
