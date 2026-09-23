@@ -5,6 +5,18 @@ Use the fetch formulas to execute custom SQL query files stored locally in `./sq
 > [!IMPORTANT]
 > Fetch formulas execute SQL from local query files. The file name is passed without the `.sql` extension, and parameter values are bound in the same order as the placeholders appear in the query.
 
+### Configure Folder path
+
+The connector reads the `OPERA_SQL_DIR` environment variable.
+
+- additional to `OPERA_SQL_DIR` directory the default directory `%LOCALAPPDATA%\xkyeron\sql`
+
+```powershell
+setx OPERA_SQL_DIR "D:\sql"
+```
+
+After setting the variable if connector is running need to restart the connector
+
 ### Available formulas
 
 - `=OPERA_DATA(identifier, queryName, [param1], [param2], ...)` — returns a full table with headers and rows as a spill range.
@@ -53,8 +65,6 @@ then you can return its full result table with:
 | CRO      | CRO                | 2014-05-13 13:57:31 | 10461    |
 | RESORT01 | Demo Resort Small  | 2023-08-08 00:00:00 | 10462    |
 | ORS      | Opera Demo ORS/OIS | 1749-10-12 09:11:43 | 667963   |
-
-
 
 > [!Important]
 > Leave enough empty space to the right and below the formula cell. Excel will spill the returned table there.
