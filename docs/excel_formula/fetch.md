@@ -101,9 +101,86 @@ This returns the single numeric value from the first column of the first row.
 
 ---
 
+## Paginated fetch API
+
+For queries that return a lot of rows, call `POST /fetch_table/{identifier}` to get the result one page at a time. It uses the same query files and parameters as `OPERA_DATA`.
+
+### Request
+
+```json
+{
+  "query": "reservations_by_date",
+  "params": ["2026-08-24", "2026-09-23"],
+  "page": 1,
+  "fetch_count": 200
+}
+```
+
+- **query**: the SQL file name without the `.sql` extension.
+- **params**: values bound to query placeholders in order (optional).
+- **page**: the page number to return, starting at 1 (optional, default `1`).
+- **fetch_count**: rows per page (optional, default `200`, maximum `5000`).
+
+### Response
+
+```json
+{
+  "columns": ["RESORT", "NAME", "BEGIN_DATE", "HOTEL_ID"],
+  "rows": [
+    ["CRO", "CRO", "2014-05-13 13:57:31", 10461],
+    ["RESORT01", "Demo Resort Small", "2023-08-08 00:00:00", 10462]
+  ],
+  "pagination": {
+    "total_rows": 1250,
+    "total_pages": 7,
+    "current_page": 1,
+    "next_page": 2,
+    "fetch_count": 200
+  }
+}
+```
+
+- `columns` and `rows` have the same format as `/fetch`.
+- `next_page` is `null` on the last page. To read everything, keep requesting `next_page` until it is `null`.
+- A page after the last one returns an empty `rows` list.
+
+Errors are returned as `{"error": "..."}`, the same as `/fetch`. A `page` of `0` or a `fetch_count` outside 1–5000 returns HTTP 400.
+
+### How the query is paged
+
+The connector does not change your SQL file. It wraps it in two queries:
+
+```sql
+-- total_rows
+SELECT COUNT(*) FROM ( <your query> )
+
+-- the requested page
+SELECT /*+ FIRST_ROWS(<fetch_count>) */ * FROM ( <your query> )
+OFFSET :page_offset ROWS FETCH NEXT :page_size ROWS ONLY
+```
+
+`:page_offset` is `(page - 1) * fetch_count` and `:page_size` is `fetch_count`. The `FIRST_ROWS` hint tells the Oracle optimizer to return the first rows quickly.
+
+> [!NOTE]
+> `OFFSET ... FETCH` requires Oracle 12c or later.
+
+> [!IMPORTANT]
+> Add an `ORDER BY` to any query you page through. Without one, Oracle can return rows in a different order on each request, so rows can repeat or go missing between pages.
+
+A trailing `;` at the end of the query file is removed automatically.
+
+### Example
+
+```powershell
+Invoke-WebRequest -Method Post -Uri http://127.0.0.1:8080/fetch_table/RESORT01 `
+  -ContentType "application/json" -Body '{"query":"demo","page":2,"fetch_count":500}'
+```
+
+---
+
 ## Parameter binding
 
-When using `OPERA_DATA` or `OPERA_VALUE`, parameters are bound in the order they are supplied.
+When using `OPERA_DATA`, `OPERA_VALUE` or the paginated fetch API, parameters are bound in the order they are supplied.
 
 - `p1` is bound to `:1`
 - `p2` is bound to `:2`
