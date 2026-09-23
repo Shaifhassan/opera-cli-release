@@ -21,7 +21,7 @@ function Resolve-OperaCli {
         return $cmd.Source
     }
 
-    $fallback = "$env:LOCALAPPDATA\OperaCLI\opera_cli.exe"
+    $fallback = "$env:LOCALAPPDATA\xkyeron\opera_cli.exe"
 
     if (Test-Path $fallback) {
         return $fallback
@@ -110,8 +110,8 @@ while ($addAnother) {
     }
     else {
         Write-Host ""
-        # Write-Host "Testing connection..." -ForegroundColor Cyan
-        # & $operaCli server connect $name
+        Write-Host "Testing connection..." -ForegroundColor Cyan
+        & $operaCli server connect $name
     }
 
     Write-Host ""

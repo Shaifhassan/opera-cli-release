@@ -168,6 +168,7 @@ Remove-Item `
 
 Write-Host ""
 Write-Host "Successfully installed Opera CLI $version." -ForegroundColor Green
+Write-Host "Installed to $installDir"
 Write-Host ""
 Write-Host "Restart your terminal and run:" -ForegroundColor Yellow
 Write-Host ""
