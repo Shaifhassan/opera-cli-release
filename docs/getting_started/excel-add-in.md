@@ -41,6 +41,8 @@ The add-in reads the `DATA_HOST` environment variable.
 
 > [!NOTE]
 > In a self-hosted environment, the default value `http://127.0.0.1:8080` works when Excel and the connector are running on the same machine.
+>
+> If the connector runs on a remote server instead, see [Remote Access with ngrok](ngrok-remote-access.md) for exposing it publicly and pointing `DATA_HOST` at the tunnel URL.
 
 Example PowerShell commands:
 

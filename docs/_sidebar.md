@@ -26,6 +26,7 @@
 - **Advanced Usage**
   - [Excel VBA](excel_formula/vba.md)
   - [Bulk Configuration Download](excel_formula/bulk-download.md)
+  - [Remote Access with ngrok](getting_started/ngrok-remote-access.md)
 
 <!--
 - **Maintenance**
