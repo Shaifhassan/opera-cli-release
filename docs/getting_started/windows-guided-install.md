@@ -9,7 +9,7 @@ This guided install is Windows-only. For Linux, macOS, or a fully manual Windows
 Running `install.ps1` will:
 
 1. Look up the latest release on GitHub and download the Windows archive.
-2. Extract `opera_cli.exe` and `opera_connector.exe` to `%LOCALAPPDATA%\xkyeron`.
+2. Extract `opera_cli.exe`, `opera_connector.exe`, and the bundled Oracle Instant Client DLLs to `%LOCALAPPDATA%\xkyeron`. No separate Oracle client install is needed.
 3. Add that folder to your user `PATH`.
 4. Download `OperaExcelFunctions.xlam` to `%APPDATA%\Microsoft\AddIns` and unblock it, so Excel won't flag it as coming from the internet.
 5. Ask if you'd like to add your first Oracle server connection now, and if so, walk you through it interactively.
@@ -73,6 +73,7 @@ opera_connector.exe
 
 ## Notes
 
+- The release archive bundles the Oracle Instant Client (Basic Light, x64) alongside the executables, so you don't need Oracle's client installed separately. It's installed into the same `%LOCALAPPDATA%\xkyeron` folder, where Windows' DLL search order picks it up automatically.
 - The guided install places binaries under `%LOCALAPPDATA%\xkyeron`. This is separate from the manual install path (`C:\OperaConnector`) described in the [self-hosted guide](self-hosted.md) — if you previously installed manually, pick one location to avoid confusion, or just rerun the installer to standardize on the guided path.
 - The script always installs the latest release. To reinstall or upgrade later, just run the `irm ... | iex` command again.
 - Both scripts are synced from this repository's `script/` folder — see [`self-hosted.md`](self-hosted.md) if you'd rather install manually or need Linux/macOS steps.
