@@ -88,18 +88,19 @@ Expand-Archive `
     -Force
 
 foreach ($exe in "opera_cli.exe", "opera_connector.exe") {
-
-    $source = Join-Path $tempDir $exe
-
-    if (!(Test-Path $source)) {
+    if (!(Test-Path (Join-Path $tempDir $exe))) {
         throw "Expected file not found in archive: $exe"
     }
-
-    Copy-Item `
-        $source `
-        (Join-Path $installDir $exe) `
-        -Force
 }
+
+# Copy everything (the two executables plus the bundled Oracle Instant Client
+# DLLs) so the client DLLs sit next to the exes where Windows' DLL search
+# order will find them.
+Copy-Item `
+    (Join-Path $tempDir "*") `
+    $installDir `
+    -Recurse `
+    -Force
 
 # ------------------------------------------------------------
 # 5. Download and install the Excel add-in
@@ -168,7 +169,7 @@ Remove-Item `
 
 Write-Host ""
 Write-Host "Successfully installed Opera CLI $version." -ForegroundColor Green
-Write-Host "Installed to $installDir"
+Write-Host "Installed to $installDir (includes the bundled Oracle Instant Client)"
 Write-Host ""
 Write-Host "Restart your terminal and run:" -ForegroundColor Yellow
 Write-Host ""
