@@ -93,9 +93,6 @@ foreach ($exe in "opera_cli.exe", "opera_connector.exe") {
     }
 }
 
-# Copy everything (the two executables plus the bundled Oracle Instant Client
-# DLLs) so the client DLLs sit next to the exes where Windows' DLL search
-# order will find them.
 Copy-Item `
     (Join-Path $tempDir "*") `
     $installDir `
@@ -103,7 +100,72 @@ Copy-Item `
     -Force
 
 # ------------------------------------------------------------
-# 5. Download and install the Excel add-in
+# 5. Optional: Oracle Instant Client
+# ------------------------------------------------------------
+# Not bundled in the release archive (keeps the download small). The DLLs
+# are placed next to the exes, where Windows' DLL search order finds them.
+# Skipped if oci.dll is already in the install dir or anywhere on PATH.
+
+$oracleStatus = "not installed"
+
+$existingOci = $null
+$localOci = Join-Path $installDir "oci.dll"
+
+if (Test-Path $localOci) {
+    $existingOci = $localOci
+}
+else {
+    $pathHit = Get-Command "oci.dll" -CommandType Application -ErrorAction SilentlyContinue |
+        Select-Object -First 1
+    if ($pathHit) {
+        $existingOci = $pathHit.Source
+    }
+}
+
+if ($existingOci) {
+    Write-Host ""
+    Write-Host "Oracle client already present: $existingOci" -ForegroundColor Green
+    $oracleStatus = "already present ($existingOci)"
+}
+else {
+    Write-Host ""
+    $installOracle = Read-Host "Oracle Instant Client was not found. Download and install it now (~30 MB)? (Y/n)"
+
+    if ($installOracle -notmatch "^(n|no)$") {
+        $oracleVersion = "23.5.0.24.07"
+        $oracleUrl = "https://download.oracle.com/otn_software/nt/instantclient/2350000/instantclient-basiclite-windows.x64-$oracleVersion.zip"
+        $oracleZip = Join-Path $tempDir "oracle-instantclient.zip"
+        $oracleExtract = Join-Path $tempDir "oracle-instantclient"
+
+        Write-Host "Downloading Oracle Instant Client $oracleVersion..." -ForegroundColor Cyan
+
+        Invoke-WebRequest -Uri $oracleUrl -OutFile $oracleZip
+        Expand-Archive -Path $oracleZip -DestinationPath $oracleExtract -Force
+
+        $instantClientDir = Get-ChildItem $oracleExtract -Directory | Select-Object -First 1
+        if (-not $instantClientDir) {
+            throw "Unexpected Oracle Instant Client archive layout."
+        }
+
+        Copy-Item "$($instantClientDir.FullName)\*.dll" $installDir -Force
+
+        # Basic Light ships BASIC_LITE_LICENSE (Basic ships BASIC_LICENSE).
+        $license = Get-ChildItem $instantClientDir.FullName -File -Filter "*LICENSE*" |
+            Select-Object -First 1
+        if ($license) {
+            Copy-Item $license.FullName (Join-Path $installDir "ORACLE_INSTANTCLIENT_LICENSE.txt") -Force
+        }
+
+        Write-Host "Installed Oracle Instant Client to $installDir" -ForegroundColor Green
+        $oracleStatus = "installed"
+    }
+    else {
+        Write-Host "Skipping Oracle Instant Client. Oracle connections will not work until a client is installed." -ForegroundColor Yellow
+    }
+}
+
+# ------------------------------------------------------------
+# 6. Download and install the Excel add-in
 # ------------------------------------------------------------
 
 Write-Host "Downloading Excel add-in..." -ForegroundColor Cyan
@@ -124,7 +186,7 @@ Unblock-File -Path $addinDest
 Write-Host "Installed Excel add-in to $addinDest" -ForegroundColor Green
 
 # ------------------------------------------------------------
-# 6. Add OperaCLI directory to user PATH
+# 7. Add OperaCLI directory to user PATH
 # ------------------------------------------------------------
 
 $userPath = [Environment]::GetEnvironmentVariable(
@@ -154,7 +216,7 @@ if ($pathEntries -notcontains $installDir) {
 }
 
 # ------------------------------------------------------------
-# 7. Cleanup
+# 8. Cleanup
 # ------------------------------------------------------------
 
 Remove-Item `
@@ -169,7 +231,8 @@ Remove-Item `
 
 Write-Host ""
 Write-Host "Successfully installed Opera CLI $version." -ForegroundColor Green
-Write-Host "Installed to $installDir (includes the bundled Oracle Instant Client)"
+Write-Host "Installed to $installDir"
+Write-Host "Oracle Instant Client: $oracleStatus"
 Write-Host ""
 Write-Host "Restart your terminal and run:" -ForegroundColor Yellow
 Write-Host ""
@@ -186,7 +249,7 @@ Write-Host "    Check ""Opera Excel VBA Functions"" and click OK."
 Write-Host ""
 
 # ------------------------------------------------------------
-# 8. Optional guided server setup
+# 9. Optional guided server setup
 # ------------------------------------------------------------
 # Prefers a local setup-connection.ps1 next to this script (when
 # run from a downloaded copy). When run via `irm ... | iex`, there
